@@ -58,14 +58,20 @@ module Mongoid
       #
       # @since 3.0.0
       def create_session(configuration)
+	    puts 'create_session:  checking configuration...'
         raise Errors::NoSessionsConfig.new unless configuration
+		puts 'create_session:  parsing configuration...'
         config, options = parse(configuration)
+		puts 'create_session:  merging configuration...'
         configuration.merge!(config) if configuration.delete(:uri)
 
         options[:instrumenter] = ActiveSupport::Notifications
+		puts 'create_session:  creating moped session...'
         session = Moped::Session.new(config[:hosts], options)
+		puts 'create_session:  setting database to ' + config[:database]
         session.use(config[:database])
         if authenticated?(config)
+		  puts 'create session:  authenticating...'
           session.login(config[:username], config[:password])
         end
         session
