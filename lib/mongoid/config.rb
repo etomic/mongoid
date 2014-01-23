@@ -80,7 +80,7 @@ module Mongoid
     #
     # @since 2.0.1
     def load!(path, environment = nil)
-	  puts "Mongoid::Config.load! - loading mongoid config at " + path + " with environment " + environment.to_s
+	  puts "Mongoid::Config.load! - loading mongoid config at " + path.to_s + " with environment " + environment.to_s
       settings = Environment.load_yaml(path, environment)
       if settings.present?
         Sessions.disconnect
