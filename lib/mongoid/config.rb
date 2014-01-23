@@ -83,9 +83,13 @@ module Mongoid
 	  puts "Mongoid::Config.load! - loading mongoid config at " + path.to_s + " with environment " + environment.to_s
       settings = Environment.load_yaml(path, environment)
       if settings.present?
+        puts "Mongoid::Config.load! - loading mongoid config from settings = " + settings.inspect
+		puts "Sessions (Before) = " + Sessions.inspect
         Sessions.disconnect
         Sessions.clear
         load_configuration(settings)
+		puts "Sessions (After) = " + Sessions.inspect
+		puts "Settings = " + settings.inspect
       end
       settings
     end
