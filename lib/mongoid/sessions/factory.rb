@@ -23,6 +23,7 @@ module Mongoid
       # @since 3.0.0
       def create(name = nil)
         return default unless name
+	    puts 'Mongoid::Sessions::Factory.create - creating sessions called ' + name
         config = Mongoid.sessions[name]
         raise Errors::NoSessionConfig.new(name) unless config
         create_session(config)
@@ -40,6 +41,7 @@ module Mongoid
       #
       # @since 3.0.0
       def default
+		puts 'Mongoid::Sessions::Factory.default - creating the default session"
         create_session(Mongoid.sessions[:default])
       end
 
