@@ -82,6 +82,7 @@ module Mongoid
     def load!(path, environment = nil)
 	  puts "Mongoid::Config.load! - loading mongoid config at " + path.to_s + " with environment " + environment.to_s
       settings = Environment.load_yaml(path, environment)
+	  puts "Settings = " + settings.inspect
       if settings.present?
         puts "Mongoid::Config.load! - loading mongoid config from settings = " + settings.inspect
 		puts "Sessions (Before) = " + Sessions.inspect

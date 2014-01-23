@@ -37,6 +37,7 @@ module Mongoid
       # @since 2.3.0
       def load_yaml(path, environment = nil)
         env = environment ? environment.to_s : env_name
+		puts "Mongoid::Config::Environment.load_yaml - loading yaml for environment " + env.to_s
         YAML.load(ERB.new(File.new(path).read).result)[env]
       end
     end
