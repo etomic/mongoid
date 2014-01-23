@@ -69,10 +69,13 @@ module Rails
       #
       # @since 2.0.0
       initializer "mongoid.load-config" do
+	    puts "Mongoid Initializer - loading config..."
         config_file = Rails.root.join("config", "mongoid.yml")
         if config_file.file?
           begin
-            ::Mongoid.load!(config_file)
+            result = ::Mongoid.load!(config_file)
+			puts "Mongo Initializer - config loaded successfully"
+			result
           rescue ::Mongoid::Errors::NoSessionsConfig => e
             handle_configuration_error(e)
           rescue ::Mongoid::Errors::NoDefaultSession => e
