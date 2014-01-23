@@ -24,6 +24,7 @@ module Mongoid
       def create(name = nil)
         return default unless name
 	    puts 'Mongoid::Sessions::Factory.create - accessing session by name'
+		puts name.inspect
         config = Mongoid.sessions[name]
         raise Errors::NoSessionConfig.new(name) unless config
 		puts 'Mongoid::Sessions::Factory.create - creating session found by name'
