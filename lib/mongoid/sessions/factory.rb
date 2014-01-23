@@ -41,7 +41,7 @@ module Mongoid
       #
       # @since 3.0.0
       def default
-		puts 'Mongoid::Sessions::Factory.default - creating the default session"
+		puts 'Mongoid::Sessions::Factory.default - creating the default session'
         create_session(Mongoid.sessions[:default])
       end
 
