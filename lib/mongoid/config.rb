@@ -82,7 +82,10 @@ module Mongoid
     def load!(path, environment = nil)
 	  puts "Mongoid::Config.load! - loading mongoid config at " + path.to_s + " with environment " + environment.to_s
       settings = Environment.load_yaml(path, environment)
-	  puts "Settings = " + settings.inspect
+	  puts "Mongoid::Config.load! - after environment load..."
+	  puts "settings (afer Environment.load) = " + settings.inspect
+	  puts "Mongoid::Config.load! - after displaying settings..."
+	  logger.info "This is a test of the emergency logging service"
       if settings.present?
         puts "Mongoid::Config.load! - loading mongoid config from settings = " + settings.inspect
 		puts "Sessions (Before) = " + Sessions.inspect
